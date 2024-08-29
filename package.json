@@ -1,0 +1,18 @@
+{
+  "name": "playwrightwithai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --project=chromium --headed"
+  },
+  "keywords": [],
+  "author": "Kimmich",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@zerostep/playwright": "^0.1.5",
+    "playwright": "^1.46.1",
+    "zerostep": "^1.2.1"
+  }
+}
