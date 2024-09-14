@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --project=chromium "
+    "test": "npx playwright test --project=chromium ",
+    "playwright-generating:allure-report": "allure generate allure-results -o allure-report --clean && allure open allure-report",
+    "clean-playwright-reports": "rimraf  allure-report allure-results playwright-report test-results"
   },
   "keywords": [],
   "author": "Kimmich",
@@ -12,7 +14,9 @@
   "devDependencies": {
     "@playwright/test": "^1.46.1",
     "@zerostep/playwright": "^0.1.5",
+    "allure-playwright": "^3.0.0-beta.12",
     "playwright": "^1.46.1",
+    "rimraf": "^5.0.10",
     "zerostep": "^1.2.1"
   }
 }
