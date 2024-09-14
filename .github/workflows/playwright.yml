@@ -12,9 +12,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
-    - name: Cleaning 
-      run: npm run clean-playwright-reports    
+        node-version: lts/*   
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
