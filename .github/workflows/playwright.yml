@@ -19,8 +19,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npm run test
+    - name: Debug Zerostep configuration
+      run: |
+        echo "Zerostep version:"
+        npm list @zerostep/playwright
+        echo "Zerostep configuration:"
+        cat zerostep.json || echo "zerostep.json not found"
+    - name: Run Playwright tests with debug output
+      run: DEBUG=pw:api npm run test
     - name: Install Allure command line
       run: |
         sudo apt-get update
@@ -36,3 +42,9 @@ jobs:
         name: allure-report
         path: allure-report/
         retention-days: 30
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: playwright-debug-logs
+        path: test-results/
+        retention-days: 5
