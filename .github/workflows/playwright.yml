@@ -22,6 +22,7 @@ jobs:
     - name: Run Playwright tests
       run: npm run test
     - name: Install Allure command line
+      if: always()
       run: |
         sudo apt-get update
         sudo apt-get install -y default-jre
@@ -29,10 +30,19 @@ jobs:
         sudo tar -zxvf allure-2.13.8.tgz -C /opt/
         sudo ln -s /opt/allure-2.13.8/bin/allure /usr/bin/allure
     - name: Generate Allure Report
+      if: always()
       run: allure generate allure-results -o allure-report --clean
-    - uses: actions/upload-artifact@v4
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: allure-report
         path: allure-report/
         retention-days: 30
+    - name: Upload Playwright Test Results
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: playwright-test-results
+        path: test-results/
+        retention-days: 5

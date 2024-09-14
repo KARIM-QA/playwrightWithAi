@@ -18,7 +18,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html'],
-    ['allure-playwright',{outputFolder:'allure_results'}]
+    ['allure-playwright',{outputFolder:'allure-results'}]
   ],
   
   timeout: 60000, 
