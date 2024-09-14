@@ -20,7 +20,7 @@ test.describe('demoBlaze e-commerce app', () => {
       await expect(productName).toBeVisible();
 
     } catch (error) {
-      console.error('Error during process:', error);
+      console.error('Error processing:', error);
     }
     
   })
